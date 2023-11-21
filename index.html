@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>?</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.5">
+		
+		<noscript>
+			<meta http-equiv="refresh" content="5; url='https://kuba.lol'" />
+		</noscript>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+			
+			html {
+				cursor: not-allowed;
+				user-select: none;
+			}
+			
+			body {
+				background-color: #161616;
+				color: white;
+				font-family: 'Raleway', serif;
+			}
+			
+			@keyframes welcome {
+				from {
+					opacity: 0;
+					transform: translate(-50%, calc(-50% - 20px));
+				}
+				
+				to {
+					opacity: 1;
+					transform: translate(-50, -50%);
+				}
+			}
+			
+			div#text {
+				animation: welcome 1s 200ms forwards;
+			}
+			
+			div#text {
+				font-weight: 1000;
+				font-size: 1.5em;
+				text-align: center;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				opacity: 0;
+			}
+			
+			span.line {
+				display: block;
+			}
+			
+			a {
+				color: lime
+			}
+		</style>
+	</head>
+	<body>
+		<div id="text">
+			<h1>Congrats!</h1>
+			<span class="line">You have found my secret website! ...but that's not it.</span>
+			<span class="line">The correct website is <a href="https://kuba.lol">kuba.lol</a>!</span>
+			<br>
+			<span class="line">Give me a moment! I will redirect you to it in <span id="counter"><noscript>5</noscript></span> seconds!
+		</div>
+		<script>
+			// you don't need that let's be honest
+			window.ondragstart = () => false
+			window.onkeydown = () => false
+			window.oncontextmenu = () => false
+		
+			const counter = document.getElementById('counter')
+			let num = 5
+			
+			const startCountdown = async () => {
+				while(num >= 0) {
+					counter.innerText = num.toFixed(2);
+					await new Promise(r=>setTimeout(r,10))
+					num -= 0.01
+				}
+				location.href = "https://kuba.lol"
+			}
+			
+			startCountdown()
+		</script>
+	</body>
+</html>
